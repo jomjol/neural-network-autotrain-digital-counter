@@ -38,18 +38,6 @@ def fig2img(fig, _x = -1, _y = -1):
     return img
     
 
-def fil2file(fig, file):
-    import io
-    buf = io.BytesIO()
-    fig.savefig(buf)
-    buf.seek(0)
-    img = Image.open(buf)  
-    img.save(file,"png")
-
-
-# In[5]:
-
-
 result = []
 result.append(numpy.empty([0]))
 result.append(numpy.empty([0]))
@@ -97,7 +85,7 @@ plt.ylabel('loss');
 plt.xlabel('epoch');
 plt.legend(['train','eval'], loc='upper left');
 
-pdf.image(fig2img(fig, 0.8));
+pdf.image(fig2img(fig, 0.9), x=30, y=10);
 
 
 # In[8]:
@@ -109,7 +97,7 @@ plt.plot(result[0]);
 plt.xlabel('trainings run');
 plt.legend(['date','eval'], loc='upper left');
 
-pdf.image(fig2img(fig, 0.8));
+pdf.image(fig2img(fig, 0.9), x=30, y=110);
 
 
 # In[9]:
@@ -120,7 +108,7 @@ plt.plot(result[1])
 plt.xlabel('number of images')
 plt.legend(['date','eval'], loc='upper left')
 
-pdf.image(fig2img(fig, 0.8));
+pdf.image(fig2img(fig, 0.9), x=30, y=210);
 
 
 # In[10]:
@@ -190,6 +178,17 @@ for aktfile in files:
         recognition_good = recognition_good + 1
 
 
+res = numpy.asarray(res)
+
+fig, ax = plt.subplots();
+plt.plot(res[:,0]);
+plt.plot(res[:,1]);
+plt.title('Result');
+plt.ylabel('Digital Value');
+plt.xlabel('#Picture');
+plt.legend(['real','model'], loc='upper left');
+pdf.image(fig2img(fig));
+
 # In[13]:
 
 
@@ -209,10 +208,4 @@ pdf.cell(txt=_zwtxt)
 
 pdf.output(DefaultName + ".pdf", 'F')
 pdf.output("reports/" + DateNow + "-" + TimeNow + "_" + DefaultName + ".pdf", 'F')
-
-
-# In[ ]:
-
-
-
 

@@ -85,7 +85,8 @@ plt.ylabel('loss');
 plt.xlabel('epoch');
 plt.legend(['train','eval'], loc='upper left');
 
-pdf.image(fig2img(fig, 0.9), x=30, y=10);
+#pdf.image(fig2img(fig, 0.9), x=30, y=10);
+pdf.image(fig2img(fig));
 
 
 # In[8]:
@@ -97,7 +98,8 @@ plt.plot(result[0]);
 plt.xlabel('trainings run');
 plt.legend(['date','eval'], loc='upper left');
 
-pdf.image(fig2img(fig, 0.9), x=30, y=110);
+#pdf.image(fig2img(fig, 0.9), x=30, y=110);
+pdf.image(fig2img(fig, 0.5));
 
 
 # In[9]:
@@ -108,7 +110,8 @@ plt.plot(result[1])
 plt.xlabel('number of images')
 plt.legend(['date','eval'], loc='upper left')
 
-pdf.image(fig2img(fig, 0.9), x=30, y=210);
+#pdf.image(fig2img(fig, 0.9), x=30, y=210);
+pdf.image(fig2img(fig, 0.5));
 
 
 # In[10]:

@@ -67,7 +67,7 @@ with open(loadname, newline = '') as data:
 # In[6]:
 
 
-pdf = FPDF();
+pdf = FPDF(format="A4");
 pdf.add_page();
 pdf.set_font('helvetica', 'B', 20);
 pdf.cell(txt=str(DefaultName));

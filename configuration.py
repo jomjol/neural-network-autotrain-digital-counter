@@ -6,6 +6,8 @@ from datetime import datetime
 DateNow = datetime.today().strftime('%Y%m%d')
 TimeNow = datetime.today().strftime('%H%M%S')
 
+ReportOnly = true             # erzeugt nur den Report wenn aktiviert
+
 
 Input_Raw = 'ziffer_raw'
 Output_Resize= 'ziffer_resize'

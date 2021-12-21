@@ -92,14 +92,13 @@ pdf.image(fig2img(fig));
 # In[8]:
 
 
-fig, ax = plt.subplots();
-plt.ioff();
-plt.plot(result[0]);
-plt.xlabel('trainings run');
-plt.legend(['date','eval'], loc='upper left');
+#fig, ax = plt.subplots();
+#plt.ioff();
+#plt.plot(result[0]);
+#plt.xlabel('trainings run');
+#plt.legend(['date','eval'], loc='upper left');
 
-#pdf.image(fig2img(fig, 0.9), x=30, y=110);
-pdf.image(fig2img(fig, 0.5));
+#pdf.image(fig2img(fig, 0.9), x=30, y=110, w=150);
 
 
 # In[9]:
@@ -110,8 +109,7 @@ plt.plot(result[1])
 plt.xlabel('number of images')
 plt.legend(['date','eval'], loc='upper left')
 
-#pdf.image(fig2img(fig, 0.9), x=30, y=210);
-pdf.image(fig2img(fig, 0.5));
+pdf.image(fig2img(fig), x=30, y=110, w=150);
 
 
 # In[10]:
@@ -143,6 +141,7 @@ recognition_bad = 0
 recognition_good = 0
 
 files = glob.glob(Input_dir + '/*.jpg')
+files.sort()
 
 for aktfile in files:
     base = os.path.basename(aktfile)

@@ -85,8 +85,7 @@ plt.ylabel('loss');
 plt.xlabel('epoch');
 plt.legend(['train','eval'], loc='upper left');
 
-#pdf.image(fig2img(fig, 0.9), x=30, y=10);
-pdf.image(fig2img(fig));
+pdf.image(fig2img(fig), x=30, y=10, w=150);
 
 
 # In[8]:
@@ -189,7 +188,7 @@ plt.title('Result');
 plt.ylabel('Digital Value');
 plt.xlabel('#Picture');
 plt.legend(['real','model'], loc='upper left');
-pdf.image(fig2img(fig));
+pdf.image(fig2img(fig), w=150);
 
 # In[13]:
 

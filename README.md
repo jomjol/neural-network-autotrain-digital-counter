@@ -1,7 +1,21 @@
 # neural-network-autotrain-digital-counter
-Action and script controlled automated training of neural network to readout the value of a digital counter
+Action and script controlled automated training of neural network to readout the value of a digital counter. This is an via GitHub Actions automatized version of https://github.com/jomjol/neural-network-digital-counter-readout.
 
-The readout is used in a water meter measurement system. An overview can be found here: [https://github.com/jomjol/AI-on-the-edge-device](https://github.com/jomjol/AI-on-the-edge-device)
+There you also find further background information.
+
+### Working principle:
+
+1) New training image of a digital counter is uploaded to the directory `/ziffer_raw/` is uploaded
+2) GitHub action for a training cycle including the new images is started
+   * starting point: old trained neural  network (loading of the old training status)
+   * different versions of the neural network are trained in a dedicated docker container
+3) Standardized report are generated to evaluate the training success
+4) Reports and results are pushed to the GitHub for further investigations and usage
+   * Old training status is stored additionally (reports and neural network configurations)
+
+
+
+The neural network is used within the "AI-on-the-edge" project to digitize different analog meters (watermeter, gasmeter, ...) as the a water meter measurement system. An overview can be found here: [https://github.com/jomjol/AI-on-the-edge-device](https://github.com/jomjol/AI-on-the-edge-device)
 
 
 
@@ -10,11 +24,15 @@ The readout is used in a water meter measurement system. An overview can be foun
 * Initial Version
 
 
-
-
 #### [Overview older Versions](Versions.md)
 
-## Description tbd
 
-tbd
+
+
+
+_______
+
+## Description
+
+Background and details for the neural network can be found in: https://github.com/jomjol/neural-network-digital-counter-readout
 

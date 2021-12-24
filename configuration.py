@@ -6,7 +6,11 @@ from datetime import datetime
 DateNow = datetime.today().strftime('%Y%m%d')
 TimeNow = datetime.today().strftime('%H%M%S')
 
-ReportOnly = True             # erzeugt nur den Report wenn aktiviert
+#ReportOnly = True             # erzeugt nur den Report wenn aktiviert
+ReportOnly = False
+
+#LogFile = None
+LogFile = "log.txt"
 
 
 Input_Raw = 'ziffer_raw'

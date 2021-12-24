@@ -2,6 +2,10 @@ import glob
 import os
 from PIL import Image 
 
+#if LogFile:
+#    sys.stdout = open(LogFile, 'a') 
+
+
 def empty_directory(_directory):
     files = glob.glob(_directory + '/*.*')
     i = 0

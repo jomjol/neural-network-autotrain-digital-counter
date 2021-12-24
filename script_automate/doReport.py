@@ -9,6 +9,9 @@ import script_automate.train_CNN
 import glob
 import os
 
+if LogFile:
+    sys.stdout = open(LogFile, 'a') 
+
 
 DefaultName = sys.argv[1]
 print(DefaultName)
@@ -122,6 +125,8 @@ pdf.set_font('helvetica', '', 12);
 
 
 model = script_automate.train_CNN.load_model(DefaultName)
+
+
 
 
 # In[12]:

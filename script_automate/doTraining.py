@@ -6,6 +6,9 @@ import numpy as np
 import sys
 from pathlib import Path
 
+if LogFile:
+    sys.stdout = open(LogFile, 'a') 
+
 
 DefaultName = sys.argv[1]
 print(DefaultName)

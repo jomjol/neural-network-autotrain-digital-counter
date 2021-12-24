@@ -208,5 +208,5 @@ pdf.cell(txt=_zwtxt)
 
 
 pdf.output("Report_" + DefaultName + ".pdf", 'F')
-pdf.output("reports/" + DateNow + "-" + TimeNow + "_" + Report_" + DefaultName + ".pdf", 'F')
+pdf.output("reports/" + DateNow + "-" + TimeNow + "_Report_" + DefaultName + ".pdf", 'F')
 

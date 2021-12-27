@@ -8,7 +8,7 @@ if LogFile:
         os.remove(LogFile)
 
 if not ReportOnly:
-    exec(open("script_automate/image_preparation.py").read()))
+    exec(open("script_automate/image_preparation.py").read())
     
 for x in configurations:
     arg1 = x

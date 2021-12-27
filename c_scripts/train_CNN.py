@@ -13,9 +13,9 @@ from sklearn.model_selection import train_test_split
 
 def load_model(DefaultName, DateNow = "NULL"):
     model = None
-    if os.path.exists("1_output_actual/" + str(DefaultName)):
+    if os.path.exists(str(DefaultName)):
         print("File Exists")
-        model = tf.keras.models.load_model('1_output_actual/' + str(DefaultName))
+        model = tf.keras.models.load_model(str(DefaultName))
     else:
         print("Workfile does not exists - init model necessary")
 

@@ -13,8 +13,8 @@ LogFile = None
 #LogFile = "1_output_actual/log.txt"
 
 
-Input_Raw = '../ziffer_raw'
-Output_Resize= '../ziffer_resize'
+Input_Raw = 'ziffer_raw'
+Output_Resize= 'ziffer_resize'
 
 target_size_x = 20
 target_size_y = 32

@@ -5,7 +5,7 @@ import matplotlib
 import matplotlib.pyplot as plt
 from PIL import Image 
 from fpdf import FPDF
-import script_automate.train_CNN
+import c_scripts.train_CNN as scripts
 import glob
 import os
 
@@ -18,7 +18,7 @@ print(DefaultName)
 
 
 #Allgemeine Einstellungen
-exec(open("../configuration.py").read())
+exec(open("configuration.py").read())
 
 
 # In[4]:
@@ -48,7 +48,7 @@ result.append(numpy.empty([0]))
 result.append(numpy.empty([0]))
 result.append(numpy.empty([0]))
 
-loadname = '../b_output_historic/training_' + DefaultName + '.txt'
+loadname = 'b_output_historic/training_' + DefaultName + '.txt'
 
 with open(loadname, newline = '') as data:
     data_reader = csv.reader(data, delimiter='\t')
@@ -124,7 +124,7 @@ pdf.set_font('helvetica', '', 12);
 # In[11]:
 
 
-model = script_automate.train_CNN.load_model("../../a_output_actual/" + DefaultName)
+model = scripts.load_model("a_output_actual/" + DefaultName)
 
 
 
@@ -212,6 +212,6 @@ pdf.cell(txt=_zwtxt)
 # In[14]:
 
 
-pdf.output("../a_output_actual/Report_" + DefaultName + ".pdf", 'F')
-pdf.output("../b_output_historic/reports/" + DateNow + "-" + TimeNow + "_Report_" + DefaultName + ".pdf", 'F')
+pdf.output("a_output_actual/Report_" + DefaultName + ".pdf", 'F')
+pdf.output("b_output_historic/reports/" + DateNow + "-" + TimeNow + "_Report_" + DefaultName + ".pdf", 'F')
 

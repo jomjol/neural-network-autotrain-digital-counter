@@ -9,8 +9,8 @@ TimeNow = datetime.today().strftime('%H%M%S')
 #ReportOnly = True             # erzeugt nur den Report wenn aktiviert
 ReportOnly = False
 
-LogFile = None
-#LogFile = "1_output_actual/log.txt"
+#LogFile = None
+LogFile = "a_output_actual/log.txt"
 
 
 Input_Raw = 'ziffer_raw'
@@ -30,7 +30,7 @@ ZoomRange = 0.2
 
 ### Training Settings
 Batch_Size = 4
-Epoch_Anz  = 1
+Epoch_Anz  = 100
 
 ### CNN-Configuration
 #configurations = ["dig-s3"]

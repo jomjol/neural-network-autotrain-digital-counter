@@ -6,4 +6,4 @@ outputs:
     description: 'The time we greeted you'
 runs:
   using: 'docker'
-  image: 'Dockerfile'
+  image: 'c_scripts/Dockerfile'

@@ -1,7 +1,0 @@
-tensorflow==2.4.0
-pillow
-numpy
-matplotlib
-scipy
-scikit-learn
-fpdf2

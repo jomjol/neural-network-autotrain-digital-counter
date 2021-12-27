@@ -9,12 +9,12 @@ TimeNow = datetime.today().strftime('%H%M%S')
 #ReportOnly = True             # erzeugt nur den Report wenn aktiviert
 ReportOnly = False
 
-#LogFile = None
-LogFile = "log.txt"
+LogFile = None
+#LogFile = "1_output_actual/log.txt"
 
 
-Input_Raw = 'ziffer_raw'
-Output_Resize= 'ziffer_resize'
+Input_Raw = '../ziffer_raw'
+Output_Resize= '../ziffer_resize'
 
 target_size_x = 20
 target_size_y = 32
@@ -30,9 +30,10 @@ ZoomRange = 0.2
 
 ### Training Settings
 Batch_Size = 4
-Epoch_Anz  = 100
+Epoch_Anz  = 1
 
 ### CNN-Configuration
+#configurations = ["dig-s3"]
 configurations = ["dig-s0", "dig-s1", "dig-s2", "dig-s3"]
 
 def get_models(_name):

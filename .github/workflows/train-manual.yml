@@ -17,6 +17,8 @@ jobs:
            git config --global user.name "user mane"
            git config --global user.email "user email"
            git add ./ 
-           git add ./saved_model
-           git commit -m "auto run"
+           git add ./1_output_actual/
+           git add ./2_output_historic/
+           git add ./ziffer_resize/
+           git commit -m "manual run"
            git push

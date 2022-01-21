@@ -19,6 +19,10 @@ The neural network is used within the "AI-on-the-edge" project to digitize diffe
 
 
 
+#### 1.2.0 Reset - (2022-01-21)
+
+* Corrected wrong labeling (LCD) and reset the learing
+
 #### 1.1.1 New Images - (2022-01-10)
 
 * Updated LCD images

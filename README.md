@@ -19,6 +19,10 @@ The neural network is used within the "AI-on-the-edge" project to digitize diffe
 
 
 
+#### 1.2.2 New Images - (2022-02-11)
+
+* new images
+
 #### 1.2.1 New Images - (2022-02-05)
 
 * new images

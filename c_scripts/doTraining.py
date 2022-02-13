@@ -1,6 +1,6 @@
 import c_scripts.train_CNN as scripts
 import tensorflow as tf
-from tensorflow.python.keras.layers import Dense, InputLayer, Conv2D, MaxPool2D, Flatten, BatchNormalization
+from tensorflow.keras.layers import Dense, InputLayer, Conv2D, MaxPool2D, Flatten, BatchNormalization
 from datetime import datetime
 import numpy as np
 import sys

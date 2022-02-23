@@ -19,6 +19,10 @@ The neural network is used within the "AI-on-the-edge" project to digitize diffe
 
 
 
+#### 1.3.0 New Images - (2022-02-23)
+
+* new images series (ISKRA meters)
+
 #### 1.2.3 New Images - (2022-02-23)
 
 * new images

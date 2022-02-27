@@ -17,7 +17,9 @@ There you also find further background information.
 
 The neural network is used within the "AI-on-the-edge" project to digitize different analog meters (watermeter, gasmeter, ...) as the a water meter measurement system. An overview can be found here: [https://github.com/jomjol/AI-on-the-edge-device](https://github.com/jomjol/AI-on-the-edge-device)
 
+#### 1.3.1 New Images - (2022-02-27)
 
+* new images
 
 #### 1.3.0 New Images - (2022-02-23)
 

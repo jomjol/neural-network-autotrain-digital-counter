@@ -15,8 +15,8 @@ from models.prune_quantize import prune, quantization
 TFliteNamingAndVersion = "knd"      # Used for tflite Filename
 Training_Percentage = 0.2      
 Batch_Size = 32     
-Epoch_Anz_Train1 = 60
-Epoch_Anz_TrainFine2 = 80
+Epoch_Anz_Train1 = 80
+Epoch_Anz_TrainFine2 = 100
 nb_classes = 11                     # move to 1. step
 input_shape = (32, 20,3)
 ziffer_data_url="ziffer_raw"
@@ -30,8 +30,9 @@ def train_knowledge_distillation(distiller, x_train, y_train, x_test, y_test,
 
     # will stop the training when there is no improvement in
     # the loss for three consecutive epochs.
-    _callbacks = [EarlyStopping(monitor='loss', patience=5, restore_best_weights=True)]
-    _callbacks.extend(callbacks)
+    # not used. stops too early
+    #_callbacks = [EarlyStopping(monitor='loss', patience=5, restore_best_weights=True)]
+    #_callbacks.extend(callbacks)
     
     ## at first train the teacher model
     history_teacher = distiller.teacher.fit(train_iterator, 
@@ -46,8 +47,9 @@ def train_knowledge_distillation(distiller, x_train, y_train, x_test, y_test,
     # will stop the training when there is no improvement in
     # the loss for three consecutive epochs.
     
-    _callbacks = [EarlyStopping(monitor='student_loss', patience=5, restore_best_weights=True)]
-    _callbacks.extend(callbacks)
+    # not used. stops too early
+    #_callbacks = [EarlyStopping(monitor='student_loss', patience=5, restore_best_weights=True)]
+    #_callbacks.extend(callbacks)
     
     # now train the student model with distiller
     history_student = distiller.fit(train_iterator, 

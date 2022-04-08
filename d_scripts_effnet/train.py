@@ -1,13 +1,14 @@
 import numpy as np
-from helpers.data_import import ziffer_data, ziffer_data_files
+import sys
 import tensorflow.keras 
 from tensorflow.keras import Model
 from keras.callbacks import LearningRateScheduler,EarlyStopping
-from helpers.data_import import load_data
-from models.models import create_distiller_models
-from helpers.plot_functions import eval_model, evaluate_ziffer, evaluate_ziffer_tflite, plot_dist_acc_loss, plot_acc_loss
-from helpers.augmentation import augmentation
-from models.prune_quantize import prune, quantization
+from d_scripts_effnet.helpers.data_import import ziffer_data, ziffer_data_files
+from d_scripts_effnet.helpers.data_import import load_data
+from d_scripts_effnet.models.models import create_distiller_models
+from d_scripts_effnet.helpers.plot_functions import eval_model, evaluate_ziffer, evaluate_ziffer_tflite, plot_dist_acc_loss, plot_acc_loss
+from d_scripts_effnet.helpers.augmentation import augmentation
+from d_scripts_effnet.models.prune_quantize import prune, quantization
 
 
 ########### Basic Parameters for Running: ################################
@@ -23,17 +24,16 @@ ziffer_data_url="ziffer_raw"
 
 ##########################################################################
 
+if LogFile:
+    sys.stdout = open(LogFile, 'a') 
+
+
 def train_knowledge_distillation(distiller, x_train, y_train, x_test, y_test, 
                                 batch_size, epochs, callbacks):
 
     train_iterator, validation_iterator = augmentation(x_train, y_train, x_test, y_test)
 
-    # will stop the training when there is no improvement in
-    # the loss for three consecutive epochs.
-    # not used. stops too early
-    #_callbacks = [EarlyStopping(monitor='loss', patience=5, restore_best_weights=True)]
-    #_callbacks.extend(callbacks)
-    
+    print("train teacher model")    
     ## at first train the teacher model
     history_teacher = distiller.teacher.fit(train_iterator, 
                     validation_data = validation_iterator, 
@@ -42,14 +42,9 @@ def train_knowledge_distillation(distiller, x_train, y_train, x_test, y_test,
                     steps_per_epoch=len(y_train)//batch_size,
                     validation_steps=len(y_test)//batch_size,
                     callbacks=callbacks, 
-                    verbose=1)
+                    verbose=2)
 
-    # will stop the training when there is no improvement in
-    # the loss for three consecutive epochs.
-    
-    # not used. stops too early
-    #_callbacks = [EarlyStopping(monitor='student_loss', patience=5, restore_best_weights=True)]
-    #_callbacks.extend(callbacks)
+    print("train student model")    
     
     # now train the student model with distiller
     history_student = distiller.fit(train_iterator, 
@@ -59,7 +54,7 @@ def train_knowledge_distillation(distiller, x_train, y_train, x_test, y_test,
                     steps_per_epoch=len(y_train)//batch_size,
                     validation_steps=len(y_test)//batch_size,
                     callbacks=callbacks, 
-                    verbose=1)
+                    verbose=2)
     return history_teacher, history_student
 
 
@@ -79,7 +74,7 @@ distiller =  create_distiller_models(input_shape, nb_classes)
 # reduzing the learning rate every epoch 
 annealer = LearningRateScheduler(lambda x: 2e-3 * 0.95 ** x, verbose=0)
 
-
+print("train with chars74+ziffer")
 # train the models
 hist_teacher1, hist_student1 = train_knowledge_distillation(distiller=distiller, 
             x_train=x_train, y_train=y_train,
@@ -93,6 +88,8 @@ hist_teacher1, hist_student1 = train_knowledge_distillation(distiller=distiller,
 
 #(back to normal rate. learning rate was to low)
 annealer = LearningRateScheduler(lambda x: 5e-4 * 0.95 ** x, verbose=0)
+
+print("train with ziffer")
 
 # train the models
 # only ziffer data for fine tuning

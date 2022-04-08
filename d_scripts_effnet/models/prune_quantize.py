@@ -1,3 +1,4 @@
+from tabnanny import verbose
 import tempfile
 import tensorflow_model_optimization as tfmot
 import tensorflow as tf
@@ -13,6 +14,7 @@ def prune(model, x_train, y_train, x_test, y_test, batch_size=32, epochs=1):
         x_test, y_test, verbose=0)
 
     # beware only validation  data evaluated.
+    print("Pruning")
     print('Baseline test accuracy:', baseline_model_accuracy)
 
     prune_low_magnitude = tfmot.sparsity.keras.prune_low_magnitude
@@ -52,7 +54,8 @@ def prune(model, x_train, y_train, x_test, y_test, batch_size=32, epochs=1):
     model_for_pruning.fit(x_train, y_train,
                   batch_size=batch_size, epochs=epochs, 
                   validation_split=validation_split,
-                  callbacks=callbacks)
+                  callbacks=callbacks,
+                  verbose=2)
 
     _, model_for_pruning_accuracy = model_for_pruning.evaluate(
     x_train, y_train, verbose=0)

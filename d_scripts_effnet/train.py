@@ -21,6 +21,7 @@ Epoch_Anz_TrainFine2 = 100
 nb_classes = 11                     # move to 1. step
 input_shape = (32, 20,3)
 ziffer_data_url="ziffer_raw"
+output_dir="a_output_actual"
 
 ##########################################################################
 
@@ -113,14 +114,19 @@ model = prune(model=distiller.student,
 
 # quanitize and save the model
 tflite_model = quantization(model=model, 
-                            filename=TFliteNamingAndVersion + "q.tflite", 
                             x_train=x_ziffer_train)
 
-# todo repoting
+
+# save the model
+filename=TFliteNamingAndVersion + "q.tflite"                                                     
+open(output_dir + filename, "wb").write(tflite_model)
+    
+
+#  repoting
 ziffer_files = ziffer_data_files()
 
 import matplotlib.backends.backend_pdf
-pdf = matplotlib.backends.backend_pdf.PdfPages(TFliteNamingAndVersion + ".pdf")
+pdf = matplotlib.backends.backend_pdf.PdfPages(output_dir + TFliteNamingAndVersion + ".pdf")
 pdf.savefig(plot_acc_loss(hist_teacher1, "1. train Teacher model"))
 pdf.savefig(plot_acc_loss(hist_student1, "1. train Student model"))
 pdf.savefig(plot_acc_loss(hist_teacher2, "Fine-Tune Teacher model"))

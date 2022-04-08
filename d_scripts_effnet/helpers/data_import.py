@@ -10,22 +10,10 @@ from sklearn.model_selection import train_test_split
 
 
 def ziffer_data_files():
-    dataset_ziffer_url = "https://github.com/jomjol/neural-network-autotrain-digital-counter/archive/refs/heads/main.zip"
-    
-    #ziffer_dir = get_file(origin=dataset_ziffer_url,
-    #                        fname='neural-network-autotrain-digital-counter-main.zip',
-    #                        archive_format='zip',
-    #                        extract=True)
-    #remove .zip                        
-    #ziffer_dir = ziffer_dir[:-4]
-    #return glob.glob(ziffer_dir + '/ziffer_raw/*.jpg')
     Input_dir='./ziffer_raw'
     return  glob.glob(Input_dir + '/*.jpg')
 
     
-
-
-
 # load all data
 def ziffer_data(x_data, y_data, nb_classes):
 

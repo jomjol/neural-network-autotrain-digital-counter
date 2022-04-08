@@ -70,10 +70,9 @@ def prune(model, x_train, y_train, x_test, y_test, batch_size=32, epochs=1):
     return model_for_export
 
 
-def quantization(model, filename, x_train):
+def quantization(model, x_train):
     ##### Quantization of the pruned model
-    FileName = filename 
-
+    
     converter    = tf.lite.TFLiteConverter.from_keras_model(model)
     converter.experimental_enable_resource_variables = True
     tflite_model = converter.convert()
@@ -94,5 +93,4 @@ def quantization(model, filename, x_train):
     #converter2.inference_output_type = tf.uint8
     tflite_quant_model = converter2.convert()
 
-    open(FileName, "wb").write(tflite_quant_model)
     return tflite_quant_model

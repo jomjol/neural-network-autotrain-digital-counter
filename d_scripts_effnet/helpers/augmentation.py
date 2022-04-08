@@ -20,7 +20,7 @@ def augmentation(x_train, y_train, x_test, y_test, batch_size=32, shift_range=1,
                                 fill_mode='nearest',
                                 shear_range=shear_range,
                                 preprocessing_function=invert)
-    print(y_train.shape)
+    
     train_iterator = datagen.flow(x_train, y_train, batch_size=batch_size)
     validation_iterator = datagen.flow(x_test, y_test, batch_size=batch_size)
     return train_iterator, validation_iterator

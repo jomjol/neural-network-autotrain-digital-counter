@@ -2,7 +2,6 @@
 import numpy as np
 from PIL import Image 
 from pathlib import Path
-import tensorflow_datasets as tfds
 import glob
 import os
 from tensorflow.keras.utils import get_file

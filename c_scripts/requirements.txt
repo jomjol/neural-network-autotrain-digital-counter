@@ -1,4 +1,6 @@
 tensorflow==2.8.0
+tensorflow-model-optimization
+opencv-python
 pillow
 numpy
 matplotlib

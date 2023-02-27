@@ -1,4 +1,4 @@
-tensorflow==2.8.0
+tensorflow>=2.8.0
 pillow
 numpy
 matplotlib
